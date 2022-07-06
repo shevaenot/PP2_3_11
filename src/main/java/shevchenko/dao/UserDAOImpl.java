@@ -1,19 +1,16 @@
 package shevchenko.dao;
 
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 import shevchenko.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceUnit;
 import java.util.List;
 
-@Component
-@Transactional
+@Repository
 public class UserDAOImpl implements UserDAO{
 
-    @PersistenceUnit
+    @PersistenceContext
     EntityManager entityManager;
 
     @Override

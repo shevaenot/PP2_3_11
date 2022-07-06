@@ -43,7 +43,7 @@ public class JPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("app");
+        em.setPackagesToScan("shevchenko");
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaProperties(additionalProperties());
@@ -52,8 +52,9 @@ public class JPAConfig {
 
     private Properties additionalProperties() {
         Properties properties = new Properties();
-        properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
-        properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
+        properties.put("db.show_sql", environment.getProperty("db.show_sql"));
+        properties.put("db.hbm2ddl.auto", environment.getRequiredProperty("db.hbm2ddl.auto"));
+        properties.put("db.dialect", environment.getRequiredProperty("db.dialect"));
         return properties;
     }
 
