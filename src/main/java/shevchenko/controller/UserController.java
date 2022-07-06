@@ -24,19 +24,17 @@ public class UserController {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
-    @GetMapping("/new")
-    public String addUser(User user) {
-        return "create";
+    @GetMapping(value = "users/add")
+    public String addUser(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "addUser";
     }
 
-    @PostMapping("/new")
-    public String add(@ModelAttribute("user") User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "create";
-        } else {
-            userService.addUser(user);
-            return "redirect:/";
-        }
+    @PostMapping(value = "users/add")
+    public String addUser(@ModelAttribute("user") User user) {
+        userService.addUser(user);
+        return "redirect:/";
     }
 
     @DeleteMapping("/delete/{id}")

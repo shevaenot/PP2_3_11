@@ -1,43 +1,101 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en" xmlns:tx="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Users</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<h1>Users</h1>-->
+
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Surname</th>-->
+<!--        <th>Email</th>-->
+<!--    </tr>-->
+
+
+<!--    <tr>-->
+<!--    <tr th:each="list : ${users}">-->
+
+<!--    <td th:utext="${list.getId()}"></td>-->
+<!--    <td th:utext="${list.getName()}"></td>-->
+<!--        <td th:utext="${list.getSurname()}"></td>-->
+<!--        <td th:utext="${list.getEmail()()}"></td>-->
+
+<!--    <td>-->
+<!--        <form th:action="@{/edit/{id}(id=${user.id})}" th:object="${user}">-->
+<!--            <button type="submit">Изменить</button>-->
+<!--        </form>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--        <form th:action="@{/delete(id=${user.id})}" th:object="${user}">-->
+<!--            <input type="hidden" name="id" th:value="${user.id}">-->
+<!--            <button type="submit">Удалить</button>-->
+<!--        </form>-->
+<!--    </td>-->
+
+
+<!--&lt;!&ndash;    <td>&ndash;&gt;-->
+<!--&lt;!&ndash;        <input type="button" value="Update"&ndash;&gt;-->
+<!--&lt;!&ndash;               onClick="window.location.href = '${updateButton}'"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <input type="button" value="Delete"&ndash;&gt;-->
+<!--&lt;!&ndash;               onClick="window.location.href = '${deleteButton}'"/>&ndash;&gt;-->
+<!--&lt;!&ndash;    </td>&ndash;&gt;-->
+<!--</tr>-->
+<!--    </tr>-->
+
+
+<!--</table>-->
+
+<!--</body>-->
+
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en" xmlns:tx="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Users</title>
+    <title>Найденный пользователь</title>
 </head>
-
 <body>
-<h1>Users</h1>
+<div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surename</th>
+            <th>Email</th>
 
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Email</th>
+        </tr>
+        <tr>
+        <tr th:each="list : ${users}">-->
+            <td th:text="${list.getId()}">Id</td>
+            <td th:text="${list.getName()}">Имя</td>
+            <td th:text="${list.getSurname()()}">Фамилия</td>
+            <td th:text="${list.getEmail()}">Почтовый ящик</td>
+            <td>
+                <form th:action="@{/edit/{id}(id=${list.id})}" th:object="${users}">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/delete(id=${list.id})}" th:object="${users}">
+                    <input type="hidden" name="id" th:value="${list.id}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
     </tr>
-    <tr>
-    <tr th:each="list : ${users}">
-    <td th:utext="${list.getId()}"></td>
-    <td th:utext="${list.getName()}"></td>
-        <td th:utext="${list.getSurname()}"></td>
-        <td th:utext="${list.getEmail()()}"></td>
-    <td>
-        <form th:action="@{'edit/' + ${users.getId}}">
-            <input type="submit" class="buttonEdit" value="Edit"/>
-        </form>
-    </td>
-    <td>
-        <form th:method="DELETE" th:action="@{'delete/' + ${users.id}}">
-            <input type="submit" class="buttonDelete" value="Delete"/>
-        </form>
-    </td>
-
-    </tr>
-    </tr>
-
-</table>
-
+        </tr>
+    </table>
+    <br/>
+    <form th:action="@{/}">
+        <button type="submit">Back to Users</button>
+    </form>
+</div>
 </body>
-
 </html>
-
