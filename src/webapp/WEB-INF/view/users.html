@@ -82,7 +82,7 @@
                 </form>
             </td>
             <td>
-                <form th:action="@{/delete(id=${list.id})}" th:object="${list}">
+                <form th:action="@{/delete/{id}(id=${list.id})}" th:object="${list}">
                     <input type="hidden" name="id" th:value="${list.id}">
                     <button type="submit">Delete</button>
                 </form>
