@@ -75,16 +75,16 @@
         <tr>
         <tr th:each="list : ${users}">-->
             <td th:text="${list.getId()}">Id</td>
-            <td th:text="${list.getName()}">Имя</td>
-            <td th:text="${list.getSurname()()}">Фамилия</td>
-            <td th:text="${list.getEmail()}">Почтовый ящик</td>
+            <td th:text="${list.getName()}">Name</td>
+            <td th:text="${list.getSurname()()}">Surname</td>
+            <td th:text="${list.getEmail()}">Email</td>
             <td>
-                <form th:action="@{/edit/{id}(id=${list.id})}" th:object="${users}">
+                <form th:action="@{/edit/{id}(id=${list.id})}" th:object="${list}">
                     <button type="submit">Update</button>
                 </form>
             </td>
             <td>
-                <form th:action="@{/delete(id=${list.id})}" th:object="${users}">
+                <form th:action="@{/delete(id=${list.id})}" th:object="${list}">
                     <input type="hidden" name="id" th:value="${list.id}">
                     <button type="submit">Delete</button>
                 </form>

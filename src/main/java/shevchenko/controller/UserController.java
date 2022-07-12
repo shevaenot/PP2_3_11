@@ -46,13 +46,13 @@ public class UserController {
     @GetMapping("edit/{id}")
     public String updateUser(@PathVariable("id") int id, Model model) {
         model.addAttribute(userService.getUserId(id));
-        return "edit";
+        return "editUser";
     }
 
     @GetMapping("/edit")
     public String update(User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "edit";
+            return "editUSer";
         } else {
             userService.updateUser(user);
             return "redirect:/";

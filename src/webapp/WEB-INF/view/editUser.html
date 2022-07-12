@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Изменить пользователя</title>
+    <title>Create User</title>
 </head>
 <body>
-<h2>Изменить пользователя</h2>
+<h2>Create User</h2>
 <div>
 
     <form th:action="@{/users/edit}" th:object="${user}" method="post">
         <input type="hidden" name="id" th:value="${user.getId()}">
         <fieldset>
-            <legend>Данные пользователя</legend>
+            <legend>User data</legend>
             <p>
-                <label th:for="nae">Имя</label>
+                <label th:for="name">Name</label>
                 <input type="text" name="name" th:id="name" th:value="${user.getName()}">
             </p>
             <p>
@@ -26,13 +26,13 @@
             </p>
 
         </fieldset>
-        <button type="submit">Изменить данные</button>
+        <button type="submit">Create Data</button>
     </form>
 
 
     <br/>
     <form th:action="@{/}">
-        <button type="submit">Назад к списку пользователей</button>
+        <button type="submit">Back to user list</button>
     </form>
 </div>
 </body>
