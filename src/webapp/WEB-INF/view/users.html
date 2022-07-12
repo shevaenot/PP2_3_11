@@ -74,7 +74,7 @@
         <tr>
         <tr th:each="list : ${users}">
             <td th:text="${list.getName()}">Name</td>
-            <td th:text="${list.getSurname()()}">Surname</td>
+            <td th:text="${list.getSurname()}">Surname</td>
             <td th:text="${list.getEmail()}">Email</td>
             <td>
                 <form th:action="@{/edit/{id}(id=${list.id})}" th:object="${list}">
