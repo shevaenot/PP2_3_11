@@ -13,12 +13,12 @@
         <fieldset>
             <legend>Данные пользователя</legend>
             <p>
-                <label th:for="name">Имя</label>
+                <label th:for="nae">Имя</label>
                 <input type="text" name="name" th:id="name" th:value="${user.getName()}">
             </p>
             <p>
-                <label th:for="lastName">Фамилия</label>
-                <input type="text" name="lastName" th:id="lastName" th:value="${user.getLastName()}"><br/>
+                <label th:for="surname">Фамилия</label>
+                <input type="text" name="surname" th:id="surname" th:value="${user.getSurname()}"><br/>
             </p>
             <p>
                 <label th:for="email">Почтовый ящик</label>

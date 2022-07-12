@@ -49,7 +49,7 @@ public class UserController {
         return "edit";
     }
 
-    @PatchMapping("/edit")
+    @GetMapping("/edit")
     public String update(User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "edit";
