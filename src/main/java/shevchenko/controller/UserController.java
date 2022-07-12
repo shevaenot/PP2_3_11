@@ -3,6 +3,7 @@ package shevchenko.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import shevchenko.model.User;
@@ -43,19 +44,16 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("edit/{id}")
-    public String updateUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute(userService.getUserId(id));
+    @GetMapping(value = "edit/{id}")
+    public String editUser(ModelMap model, @PathVariable("id") int id) {
+        User user = userService.getUserId(id);
+        model.addAttribute("user", user);
         return "editUser";
     }
 
-    @GetMapping("/edit")
-    public String update(User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "editUSer";
-        } else {
-            userService.updateUser(user);
-            return "redirect:/";
-        }
+    @PostMapping(value = "/edit")
+    public String editUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:/";
     }
 }
