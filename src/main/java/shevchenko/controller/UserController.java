@@ -2,9 +2,7 @@ package shevchenko.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+import org.springframework.ui.Model;;
 import org.springframework.web.bind.annotation.*;
 import shevchenko.model.User;
 import shevchenko.service.UserService;
@@ -45,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping(value = "edit/{id}")
-    public String editUser(ModelMap model, @PathVariable("id") int id) {
+    public String editUser(Model model, @PathVariable("id") int id) {
         User user = userService.getUserId(id);
         model.addAttribute("user", user);
         return "editUser";

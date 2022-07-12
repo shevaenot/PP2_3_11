@@ -66,15 +66,13 @@
 <div>
     <table>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Surname</th>
             <th>Email</th>
 
         </tr>
         <tr>
-        <tr th:each="list : ${users}">-->
-            <td th:text="${list.getId()}">Id</td>
+        <tr th:each="list : ${users}">
             <td th:text="${list.getName()}">Name</td>
             <td th:text="${list.getSurname()()}">Surname</td>
             <td th:text="${list.getEmail()}">Email</td>
